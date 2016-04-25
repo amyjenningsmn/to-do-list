@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="toDoApp">
+  <head>
+    <meta charset="utf-8">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="views/bootstrap.css">
+    <!-- I need to figure out how to source bootstrap from files -->
+    <script src="vendor/angular/angular.min.js"></script>
+    <script src="assets/scripts/client.min.js"></script>
+  </head>
+  <body ng-controller="MainController as person">
+    <div class="container">
+      <h1>To Do List</h1>
+
+
+      <form ng-submit="person.addTaskData()">
+        <label>Add a task</label>
+        <input type="text" ng-model="person.taskObject.task_name" maxlength="255" />
+        {{person.taskObject}}
+        <input type="submit"/>
+      </form>
+
+      <div ng-repeat="item in person.taskList">
+        {{item.task_name}} {{item.completed}}
+        <button class="btn btn-success" ng-click="person.finishedTask(item, $index)">Completed Task</button>
+        <!-- ^^^^ Need to figure out how to make this a clickbox -->
+        <button class="btn btn-danger" ng-click="person.deleteTask(item, $index)">Delete</button>
+      </div>
+
+    </div>
+
+  </body>
+</html>
