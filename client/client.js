@@ -7,6 +7,8 @@ app.controller('MainController', ['$http', function($http){
   vm.taskObject = {"completed" : false};
   vm.taskList;
 
+
+
   vm.addTaskData = function () {
     console.log("this is the taskObject being sent to add:", vm.taskObject);
     $http.post('/task/addTask', vm.taskObject).then(function(serverResponse){

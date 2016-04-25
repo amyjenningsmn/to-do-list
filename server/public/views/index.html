@@ -3,31 +3,37 @@
   <head>
     <meta charset="utf-8">
     <title>To-Do List</title>
-    <link rel="stylesheet" href="views/bootstrap.css">
-    <!-- I need to figure out how to source bootstrap from files -->
+    <script src="assets/scripts/jquery.min.js"></script>
+    <!-- ^^^ For Bootstrap -->
+    <script src="assets/scripts/bootstrap.min.js"></script>
     <script src="vendor/angular/angular.min.js"></script>
     <script src="assets/scripts/client.min.js"></script>
+    <link rel="stylesheet" href="views/bootstrap.min.css">
+    <link rel="stylesheet" href="views/style.css">
   </head>
   <body ng-controller="MainController as person">
-    <div class="container">
-      <h1>To Do List</h1>
+    <div class="container-fluid">
 
+      <div class="jumbotron">
+        <h1>My To Do List</h1>
+        <form ng-submit="person.addTaskData()">
+          <label>Add a task</label>
+          <input type="text" ng-model="person.taskObject.task_name" maxlength="255" />
+          <!-- {{person.taskObject}} -->
+          <input type="submit"/>
+        </form>
+      </div><!-- ./jumbotron -->
 
-      <form ng-submit="person.addTaskData()">
-        <label>Add a task</label>
-        <input type="text" ng-model="person.taskObject.task_name" maxlength="255" />
-        {{person.taskObject}}
-        <input type="submit"/>
-      </form>
-
-      <div ng-repeat="item in person.taskList">
-        {{item.task_name}} {{item.completed}}
-        <button class="btn btn-success" ng-click="person.finishedTask(item, $index)">Completed Task</button>
-        <!-- ^^^^ Need to figure out how to make this a clickbox -->
-        <button class="btn btn-danger" ng-click="person.deleteTask(item, $index)">Delete</button>
+      <div class = "well" ng-repeat="item in person.taskList">
+        <span ng-class="{completed: item.completed}">{{item.task_name}}</span></br>
+        <!-- I want to say if item.completed = true, then style it red -->
+        <label>
+        <input type="checkbox" class="check" ng-model="confirmed" ng-change="person.finishedTask(item, $index)" />
+        Completed Task</label>
+        <button class="btn btn-danger" ng-click="person.deleteTask(item, $index)">Delete Task</button>
       </div>
 
-    </div>
+    </div><!-- /.container -->
 
   </body>
 </html>

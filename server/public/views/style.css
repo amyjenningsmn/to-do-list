@@ -1,0 +1,39 @@
+.completed {
+  text-decoration: line-through;
+  /*background-color:rgba(255,0,0,0.48);*/
+
+}
+
+.jumbotron {
+text-align: center;
+background-color:rgba(255,0,0,0.15);
+}
+
+.jumbotron label {
+  color: inherit;
+  border: none;
+  /*will this work?*/
+}
+
+input[type=checkbox] {
+  /* All browsers except webkit*/
+  transform: scale(1.5);
+
+  /* Webkit browsers*/
+  -webkit-transform: scale(1.5);
+}
+
+.well {
+  background-color:rgba(255,0,0,0.48);
+  text-align: center;
+}
+span {
+  font-size: 2em;
+}
+label {
+  font-size: 1.1em;
+  color: #FFF;
+  padding: 5px;
+  border: 4px solid;
+  border-radius: 6px;
+}
